@@ -1,5 +1,8 @@
 package com.springHibernateDemo.springController;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +26,20 @@ public class ControllerDemo {
 		Person person = new Person();
 		person.setName(name);
 		person.setAge(29);
+		
+		
 
 		personDao.insertPerson(person);
 		return modelAndView;
 
 	}
 
-	public ModelAndView read(
-			@RequestParam(value="name") String name) {
-		ModelAndView modelAndView=new ModelAndView();
+	@RequestMapping("/read")
+	public ModelAndView read() {
+		ModelAndView modelAndView=new ModelAndView("HelloFromSpringMVC");
+		Person person=personDao.readPersonFromCriteriaQuery();
+		modelAndView.addObject(person);
+		
 		return modelAndView;
 		
 	}

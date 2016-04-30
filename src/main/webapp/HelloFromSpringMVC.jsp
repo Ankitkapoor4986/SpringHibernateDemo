@@ -9,5 +9,7 @@
 </head>
 <body>
 	<h2>Hello, ${name}. Welcome to Spring MVC!</h2>
+	<a href="read">read</a>
+	${person.name}
 </body>
 </html>

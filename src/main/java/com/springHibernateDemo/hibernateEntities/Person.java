@@ -15,7 +15,7 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "name")
+	@Column(name="name")
 	private String name;
 	@Column(name = "age")
 	private int age;
@@ -43,4 +43,6 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	
 }
