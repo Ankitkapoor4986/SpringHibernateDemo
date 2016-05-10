@@ -35,6 +35,7 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>com.springHibernateDemo.hibernateEntities.Person</beans:value>
+                <beans:value>com.springHibernateDemo.hibernateEntities.Address</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

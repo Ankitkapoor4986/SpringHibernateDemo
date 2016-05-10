@@ -3,11 +3,13 @@
  */
 package com.springHibernateDemo.hibernateEntities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Person {
@@ -19,6 +21,8 @@ public class Person {
 	private String name;
 	@Column(name = "age")
 	private int age;
+	@OneToOne(mappedBy="person",cascade=CascadeType.ALL)
+	private Address address;
 
 	public int getAge() {
 		return age;
@@ -42,6 +46,14 @@ public class Person {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	
