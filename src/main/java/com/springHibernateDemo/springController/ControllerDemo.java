@@ -1,6 +1,9 @@
 package com.springHibernateDemo.springController;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +16,13 @@ import com.springHibernateDemo.hibernateEntities.Person;
 @Controller
 public class ControllerDemo {
 
+	@Resource(name="personDaoImpl")
+	PersonDao passsss;
 	@Autowired
-	PersonDao personDao;
+	@Qualifier("personDaoDummyImpl")
+	PersonDao pppp;
+	
+	
 
 	@RequestMapping("/hello")
 	public ModelAndView hello(
@@ -30,7 +38,7 @@ public class ControllerDemo {
 		address.setPerson(person);
 		person.setAddress(address);
 		
-		personDao.insertPerson(person);
+		passsss.insertPerson(person);
 		return modelAndView;
 		
 		
@@ -41,7 +49,7 @@ public class ControllerDemo {
 	@RequestMapping("/read")
 	public ModelAndView read() {
 		ModelAndView modelAndView=new ModelAndView("HelloFromSpringMVC");
-		Person person=personDao.readPersonFromCriteriaQuery();
+		Person person=passsss.readPersonFromCriteriaQuery();
 		modelAndView.addObject(person);
 		
 		return modelAndView;
